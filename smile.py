@@ -1,4 +1,3 @@
-import pandas as pd
 import json
 import cv2
 import numpy as np
@@ -9,7 +8,7 @@ chooseFrom = open("best.json")
 choice = json.load(chooseFrom)
 
 def mood(count):
-    if float(sm_ratio) > 1.8:
+    if sm_ratio > 1.8:
         print(f"Face {count} :\n You look happy way to go!!")
     else:
         randInd = randint(0,99)
@@ -50,9 +49,9 @@ try:
       
             # Iterating through smiles in each face (lol)
             for (sx, sy, sw, sh) in smiles: 
-                sm_ratio = str(round(sw/sx, 3))
+                sm_ratio = round(sw/sx, 3)
                 cv2.rectangle(roi_color, (sx, sy), ((sx + sw), (sy + sh)), (0, 0, 255), 2) 
-                if float(sm_ratio) > 1.8:
+                if sm_ratio > 1.8:
                     cv2.rectangle(roi_color, (sx, sy), ((sx + sw), (sy + sh)), (0, 255, 0), 2) 
 
         # show frame with all rectangles drawn
@@ -71,7 +70,7 @@ try:
                     counter -= 1
         elif len(prevface) < len(faces):
             for i in range(len(faces) - len(prevface)):
-                rt.append(RepeatingTimer(4, mood, counter))
+                rt.append(RepeatingTimer(7, mood, counter))
                 rt[-1].run()
                 counter += 1
         prevface = faces
