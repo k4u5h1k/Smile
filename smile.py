@@ -15,8 +15,8 @@ def mood(count):
         print(f"Face {count} : \n{choice[randInd]['title']}\n{choice[randInd]['body']}\n")
 
 # Replace the following two path strings to wherever your classifier files are
-face_cascade = cv2.CascadeClassifier('/usr/local/lib/python3.7/site-packages/cv2/data/haarcascade_frontalface_default.xml')
-smile_cascade = cv2.CascadeClassifier('/usr/local/lib/python3.7/site-packages/cv2/data/haarcascade_smile.xml')
+face_cascade = cv2.CascadeClassifier('./haarcascade_frontalface_default.xml')
+smile_cascade = cv2.CascadeClassifier('./haarcascade_smile.xml')
 
 counter = 1
 rt = []
