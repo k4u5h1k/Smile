@@ -59,6 +59,7 @@ try:
         k = cv2.waitKey(30) & 0xff
 
         # Handles entry and exit of multiple faces in and out of frame
+        # Designed by me and Pratik Garai
         if len(prevface) > len(faces):
             for count,item in enumerate(prevface):
                 fil = list(filter(lambda x:abs(x[0] - item[0]) < 100, faces))
@@ -70,7 +71,7 @@ try:
                     counter -= 1
         elif len(prevface) < len(faces):
             for i in range(len(faces) - len(prevface)):
-                rt.append(RepeatingTimer(7, mood, counter))
+                rt.append(RepeatingTimer(4, mood, counter))
                 rt[-1].run()
                 counter += 1
         prevface = faces
